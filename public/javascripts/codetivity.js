@@ -47,9 +47,11 @@ function toggleSignOut(){
  * Populate files
  */
 var currentFile;
+var currentFilesOwner;
 
-function shareCurrentHash(key){
+function shareCurrentHash(key, user){
     currentFile = key;
+    currentFilesOwner = user;
 }
 
 function populateFiles(){
@@ -80,7 +82,7 @@ function showFilesOnScreen(snapshot){
         // index: the ordinal position of the key within the object
         var name;
         if (files[key].hasOwnProperty('name')) name = files[key]['name'];
-        else name = 'BLEH';
+        else name = 'New File';
 
         fileDiv.append(
             '<h5 class="hoverFile nonSharedFile" id=\''+ key +'\'>' +
